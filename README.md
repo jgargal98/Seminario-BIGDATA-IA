@@ -49,11 +49,11 @@ uv instala Python y todas las librerías del proyecto con las mismas versiones p
 ### 4. Descargar el repositorio
 
 ```bash
-git clone [URL_DEL_REPOSITORIO]
+git clone https://github.com/jgargal98/Seminario-BIGDATA-IA.git
 ```
 
 ```bash
-cd seminario-bigdata-ia
+cd Seminario-BIGDATA-IA
 ```
 
 ### 5. Instalar y comprobar todo
