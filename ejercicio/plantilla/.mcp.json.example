@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "duckdb": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--python",
+        "3.12",
+        "mcp-server-motherduck@1.1.0",
+        "--db-path",
+        "RUTA_ABSOLUTA_A/data/analysis.duckdb",
+        "--max-rows",
+        "200"
+      ]
+    },
+    "huggingface": {
+      "type": "http",
+      "url": "https://huggingface.co/mcp"
+    }
+  }
+}

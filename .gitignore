@@ -1,0 +1,20 @@
+# Python environment created by uv
+.venv/
+__pycache__/
+*.pyc
+
+# Data and download metadata, recreated by scripts/check_setup.py
+data/
+.cache/
+
+# Generated per machine (absolute paths) or per run
+.mcp.json
+demo/session/
+results/
+
+# Personal Claude Code settings
+.claude/settings.local.json
+
+# OS files
+.DS_Store
+Thumbs.db
