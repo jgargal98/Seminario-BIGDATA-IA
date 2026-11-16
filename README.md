@@ -59,7 +59,7 @@ cd demo/session
 claude
 ```
 
-Cada vez que preparas un nivel, `demo/session` se borra y se crea de nuevo: lo que hayas hecho en el nivel anterior se pierde.
+Cada vez que preparas un nivel, `demo/session` se vacía: lo que hayas hecho en el nivel anterior se pierde. Sal de Claude (`/exit`) antes de preparar otro nivel y vuelve a abrirlo después: Claude solo lee el CLAUDE.md, las Skills y el MCP al arrancar.
 
 ## Ejercicio
 

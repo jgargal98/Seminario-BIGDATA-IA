@@ -12,7 +12,7 @@ Usage:
     cd demo/session
     claude
 
-Every run DELETES and recreates demo/session/, so the demo can restart from scratch.
+Every run EMPTIES demo/session/, so the demo can restart from scratch.
 """
 
 import argparse
@@ -45,9 +45,22 @@ def main():
     if not DATABASE_PATH.exists():
         raise SystemExit("Faltan los datos. Ejecuta antes: uv run scripts/install/check_setup.py")
 
-    if SESSION.exists():
-        shutil.rmtree(SESSION)
-    (SESSION / "queries").mkdir(parents=True)
+    # Empty the folder instead of deleting it: a terminal sitting inside demo/session
+    # locks the folder itself on Windows, but not its contents.
+    SESSION.mkdir(parents=True, exist_ok=True)
+    try:
+        for item in SESSION.iterdir():
+            if item.is_dir():
+                shutil.rmtree(item)
+            else:
+                item.unlink()
+    except PermissionError:
+        # A file is still open, usually because Claude Code is running in demo/session.
+        raise SystemExit(
+            "No se puede preparar el nivel: hay ficheros de demo/session en uso.\n"
+            "Cierra Claude Code (escribe /exit) y vuelve a ejecutar este comando."
+        )
+    (SESSION / "queries").mkdir()
 
     if args.level >= 2:
         shutil.copy(LEVELS / "level2" / "CLAUDE.md", SESSION / "CLAUDE.md")
