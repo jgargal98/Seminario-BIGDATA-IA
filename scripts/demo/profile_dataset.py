@@ -2,14 +2,18 @@
 Quick profile of a table: rows, columns, types, nulls and sample values.
 
 Usage:
-    uv run scripts/profile_dataset.py
-    uv run scripts/profile_dataset.py --db data/analysis.duckdb --table jobs --md profile.md
+    uv run scripts/demo/profile_dataset.py
+    uv run scripts/demo/profile_dataset.py --db data/analysis.duckdb --table jobs --md profile.md
 """
 
 import argparse
+import sys
 from pathlib import Path
 
 import duckdb
+
+# Shared settings live one folder up, in scripts/common.py.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from common import DATABASE_PATH, TABLE, format_int
 
@@ -22,7 +26,7 @@ def main():
     args = parser.parse_args()
 
     if not Path(args.db).exists():
-        raise SystemExit(f"No existe {args.db}. Ejecuta antes: uv run scripts/check_setup.py")
+        raise SystemExit(f"No existe {args.db}. Ejecuta antes: uv run scripts/install/check_setup.py")
 
     with duckdb.connect(args.db, read_only=True) as connection:
         table = args.table

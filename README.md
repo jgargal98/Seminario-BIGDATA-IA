@@ -57,7 +57,7 @@ cd Seminario-BIGDATA-IA
 ### 5. Instalar y comprobar todo
 
 ```bash
-uv run scripts/check_setup.py
+uv run scripts/install/check_setup.py
 ```
 
 Este comando instala Python y las librerías, descarga los datos de la demo y el modelo de IA, prepara el servidor MCP y comprueba que todo funciona. Puede tardar varios minutos. Al final debe decir **«Todo listo para el seminario»**. Si se interrumpe, vuelve a ejecutarlo: sigue por donde lo dejó.
@@ -81,14 +81,14 @@ La primera vez te pedirá iniciar sesión con tu cuenta de Claude. En la demo, l
 
 | Carpeta | Contenido |
 |---|---|
-| `scripts/` | Instalación y scripts que usa la demo |
+| `scripts/` | `install/`: instalación. `demo/`: scripts que usa la demo |
 | `demo/` | CLAUDE.md del nivel 2 y Skills del nivel 3 |
-| `ejercicio/` | Enunciado, catálogo de datasets y configuración del entorno para la práctica |
+| `ejercicio/` | Enunciado y catálogo de datasets |
 
 ## Demo
 
 ```bash
-uv run scripts/prepare_demo.py --level 2
+uv run scripts/demo/prepare_demo.py --level 2
 ```
 
 ```bash
@@ -105,7 +105,7 @@ Los niveles van del 1 al 4 y son acumulativos: 1 solo prompt, 2 CLAUDE.md, 3 Ski
 
 ## Ejercicio
 
-Lee [ejercicio/enunciado.md](ejercicio/enunciado.md). Tu repositorio tiene que usar la configuración del entorno de [ejercicio/plantilla](ejercicio/plantilla/).
+Lee [ejercicio/enunciado.md](ejercicio/enunciado.md).
 
 ## Problemas frecuentes
 
@@ -114,7 +114,7 @@ Lee [ejercicio/enunciado.md](ejercicio/enunciado.md). Tu repositorio tiene que u
 | `uv` o `claude` no se reconocen como comando | Cierra la terminal y abre una nueva. |
 | `claude` sigue sin reconocerse en Windows | El instalador no lo añadió al PATH. En PowerShell: `[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$env:USERPROFILE\.local\bin", "User")` y abre una terminal nueva. |
 | PowerShell no permite ejecutar scripts | Usa exactamente el comando del paso 3, que ya incluye el permiso necesario. |
-| La descarga se corta (`Connection reset`, `timeout`) | Vuelve a ejecutar `uv run scripts/check_setup.py`. Lo ya descargado no se repite. Si sigue fallando, prueba otra red. |
+| La descarga se corta (`Connection reset`, `timeout`) | Vuelve a ejecutar `uv run scripts/install/check_setup.py`. Lo ya descargado no se repite. Si sigue fallando, prueba otra red. |
 | No hay espacio en disco | Libera al menos 5 GB y vuelve a ejecutar. |
 | El servidor `huggingface` pide autenticación en `/mcp` | Selecciónalo en `/mcp` y sigue los pasos en el navegador. |
 

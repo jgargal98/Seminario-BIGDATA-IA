@@ -3,8 +3,8 @@ Run every query in queries/ and check that the results do not change.
 
 This is what lets SOMEONE ELSE reproduce your analysis:
 
-    uv run scripts/reproduce.py           # run, save results and fingerprints
-    uv run scripts/reproduce.py --check   # run and compare with saved fingerprints
+    uv run scripts/demo/reproduce.py           # run, save results and fingerprints
+    uv run scripts/demo/reproduce.py --check   # run and compare with saved fingerprints
 
 Rules for a reproducible query:
   * every query has a complete ORDER BY (without it, row order may change);
@@ -22,6 +22,9 @@ import sys
 from pathlib import Path
 
 import duckdb
+
+# Shared settings live one folder up, in scripts/common.py.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from common import DATABASE_PATH
 

@@ -24,5 +24,5 @@
 - Termina siempre con «Qué no sé / qué conviene verificar».
 
 ## Herramientas del proyecto
-- `uv run ../../scripts/profile_dataset.py` perfila la tabla.
-- `uv run ../../scripts/reproduce.py` repite todas las consultas de `queries/` y guarda sus huellas.
+- `uv run ../../scripts/demo/profile_dataset.py` perfila la tabla.
+- `uv run ../../scripts/demo/reproduce.py` repite todas las consultas de `queries/` y guarda sus huellas.

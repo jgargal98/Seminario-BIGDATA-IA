@@ -8,7 +8,7 @@ Levels are CUMULATIVE:
     4  + MCP servers (.mcp.json: DuckDB read-only and Hugging Face)
 
 Usage:
-    uv run scripts/prepare_demo.py --level 2
+    uv run scripts/demo/prepare_demo.py --level 2
     cd demo/session
     claude
 
@@ -18,6 +18,11 @@ Every run DELETES and recreates demo/session/, so the demo can restart from scra
 import argparse
 import json
 import shutil
+import sys
+from pathlib import Path
+
+# Shared settings live one folder up, in scripts/common.py.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from common import DATABASE_PATH, ROOT, mcp_config
 
@@ -38,7 +43,7 @@ def main():
     args = parser.parse_args()
 
     if not DATABASE_PATH.exists():
-        raise SystemExit("Faltan los datos. Ejecuta antes: uv run scripts/check_setup.py")
+        raise SystemExit("Faltan los datos. Ejecuta antes: uv run scripts/install/check_setup.py")
 
     if SESSION.exists():
         shutil.rmtree(SESSION)

@@ -6,15 +6,20 @@ predicts the stars from the text alone and compares them with the real stars.
 The point: an AI-made column is a prediction, so it must be checked on labelled data.
 
 Usage:
-    uv run scripts/classify_text.py
-    uv run scripts/classify_text.py --sample 500 --language en
+    uv run scripts/demo/classify_text.py
+    uv run scripts/demo/classify_text.py --sample 500 --language en
 """
 
 import argparse
+import sys
 import time
+from pathlib import Path
 
 import duckdb
 import pandas as pd
+
+# Shared settings live one folder up, in scripts/common.py.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from common import SENTIMENT_MODEL, TEXT_DATASET, TEXT_DATASET_FILE
 

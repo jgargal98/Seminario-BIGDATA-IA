@@ -22,7 +22,7 @@ description: Convierte texto libre (reseñas, comentarios, descripciones) en una
 4. Analiza la columna nueva con SQL: DuckDB consulta un DataFrame de pandas por su nombre de variable.
 
 ## Ejemplo funcionando
-`uv run ../../scripts/classify_text.py --sample 200`
+`uv run ../../scripts/demo/classify_text.py --sample 200`
 
 ## Al informar
 - Di siempre que es una **predicción**, cuántos textos se clasificaron y el error medido.

@@ -6,9 +6,9 @@ Output (data/ folder):
     analysis.duckdb   database with the `jobs` table
 
 Examples:
-    uv run scripts/download_data.py                                  # demo dataset
-    uv run scripts/download_data.py --dataset Yelp/yelp_review_full  # another HF dataset
-    uv run scripts/download_data.py --csv my_file.csv                # local file
+    uv run scripts/install/download_data.py                                  # demo dataset
+    uv run scripts/install/download_data.py --dataset Yelp/yelp_review_full  # another HF dataset
+    uv run scripts/install/download_data.py --csv my_file.csv                # local file
 """
 
 import argparse
@@ -16,6 +16,9 @@ import sys
 from pathlib import Path
 
 import duckdb
+
+# Shared settings live one folder up, in scripts/common.py.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from common import DATA_DIR, DATABASE_PATH, DEMO_DATASET, PARQUET_PATH, ROOT, TABLE, format_int
 

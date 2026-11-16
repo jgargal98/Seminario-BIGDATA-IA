@@ -1,8 +1,8 @@
 """
 Setup check for the "Big Data con IA" seminar.
 
-Run with:  uv run scripts/check_setup.py
-           uv run scripts/check_setup.py --offline   (skip everything that needs the network)
+Run with:  uv run scripts/install/check_setup.py
+           uv run scripts/install/check_setup.py --offline   (skip everything that needs the network)
 
 Verifies tools and libraries, and downloads everything that would otherwise depend
 on the classroom network: demo dataset, AI model and MCP server.
@@ -16,6 +16,10 @@ import shutil
 import subprocess
 import sys
 import time
+from pathlib import Path
+
+# Shared settings live one folder up, in scripts/common.py.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from common import (
     DATABASE_PATH,

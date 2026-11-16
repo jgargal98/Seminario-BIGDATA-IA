@@ -8,7 +8,7 @@ No se trata de que la IA dé una respuesta bonita, sino de que **el sistema func
 
 ## Qué tienes que entregar
 
-Un repositorio de GitHub que use la configuración del entorno de [plantilla/](plantilla/) (las mismas versiones de las librerías que el seminario), con:
+Un repositorio de GitHub con:
 
 1. **`question.md`:** una pregunta de investigación propia y al menos 4 subpreguntas que la respondan.
 2. **`CLAUDE.md`:** al menos 6 reglas, cada una ligada a un fallo real que observaste en Claude. Máximo 200 líneas.
