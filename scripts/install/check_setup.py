@@ -66,9 +66,9 @@ def failure(text, fix=None):
 def check_tools():
     section("1. Programas instalados")
     tools = {
-        "git": ("Git", "Instálalo con el comando de la tabla del README y abre una terminal nueva."),
-        "claude": ("Claude Code", "Instálalo con el comando de la tabla del README y abre una terminal nueva."),
-        "uvx": ("uv / uvx", "Instálalo con el comando de la tabla del README y abre una terminal nueva."),
+        "git": ("Git", "Instálalo desde el enlace del README y abre una terminal nueva."),
+        "claude": ("Claude Code", "Instálalo desde el enlace del README y abre una terminal nueva."),
+        "uvx": ("uv / uvx", "Instálalo desde el enlace del README y abre una terminal nueva."),
     }
     for command, (name, fix) in tools.items():
         if shutil.which(command):

@@ -23,13 +23,11 @@ uv run hf auth login
 
 ### Si aún no tienes los programas
 
-Necesitas un portátil con Windows, Mac o Linux, 8 GB de RAM y 5 GB libres; un plan Pro de Claude; y una cuenta de GitHub. Abre una terminal (PowerShell en Windows, Terminal en Mac o Linux) e instala:
+Necesitas un portátil con Windows, Mac o Linux, 8 GB de RAM y 5 GB libres; un plan Pro de Claude; y una cuenta de GitHub. Instala:
 
-| Programa | Windows | Mac y Linux |
-|---|---|---|
-| Git | `winget install --id Git.Git -e` | Mac: `xcode-select --install` · Linux: `sudo apt install git` |
-| Claude Code | `irm https://claude.ai/install.ps1 \| iex` | `curl -fsSL https://claude.ai/install.sh \| bash` |
-| uv | `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 \| iex"` | `curl -LsSf https://astral.sh/uv/install.sh \| sh` |
+- **Git:** <https://git-scm.com/downloads>
+- **Claude Code:** <https://code.claude.com/docs/en/setup>
+- **uv:** <https://docs.astral.sh/uv/getting-started/installation/>
 
 El chat normal de Claude no sirve: hace falta Claude Code, que trabaja sobre las carpetas de tu ordenador.
 
@@ -84,7 +82,7 @@ Lee [ejercicio/enunciado.md](ejercicio/enunciado.md).
 |---|---|
 | `uv` o `claude` no se reconocen como comando | Cierra la terminal y abre una nueva. |
 | `claude` sigue sin reconocerse en Windows | El instalador no lo añadió al PATH. En PowerShell: `[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$env:USERPROFILE\.local\bin", "User")` y abre una terminal nueva. |
-| PowerShell no permite ejecutar scripts | Instala uv con el comando exacto de la tabla, que ya incluye el permiso necesario. |
+| PowerShell no permite ejecutar scripts | Sigue las instrucciones para Windows de la [página de instalación de uv](https://docs.astral.sh/uv/getting-started/installation/). |
 | La descarga se corta (`Connection reset`, `timeout`) | Vuelve a ejecutar `uv run scripts/install/check_setup.py`. Lo ya descargado no se repite. Si sigue fallando, prueba otra red. |
 | No hay espacio en disco | Libera al menos 5 GB y vuelve a ejecutar. |
 | El servidor `huggingface` pide autenticación en `/mcp` | Selecciónalo en `/mcp` y sigue los pasos en el navegador. |
