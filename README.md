@@ -83,7 +83,7 @@ La primera vez te pedirá iniciar sesión con tu cuenta de Claude. En la demo, l
 |---|---|
 | `scripts/` | Instalación y scripts que usa la demo |
 | `demo/` | CLAUDE.md del nivel 2 y Skills del nivel 3 |
-| `ejercicio/` | Enunciado, catálogo de datasets y plantilla para empezar |
+| `ejercicio/` | Enunciado, catálogo de datasets y configuración del entorno para la práctica |
 
 ## Demo
 
@@ -105,7 +105,7 @@ Los niveles van del 1 al 4 y son acumulativos: 1 solo prompt, 2 CLAUDE.md, 3 Ski
 
 ## Ejercicio
 
-Lee [ejercicio/enunciado.md](ejercicio/enunciado.md). Tu repositorio parte de la carpeta [ejercicio/plantilla](ejercicio/plantilla/), que ya incluye sus propios scripts.
+Lee [ejercicio/enunciado.md](ejercicio/enunciado.md). Tu repositorio tiene que usar la configuración del entorno de [ejercicio/plantilla](ejercicio/plantilla/).
 
 ## Problemas frecuentes
 

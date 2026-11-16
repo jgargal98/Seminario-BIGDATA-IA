@@ -2,16 +2,6 @@
 .venv/
 __pycache__/
 
-# Data is downloaded by scripts/download_data.py, never committed
-data/
-.cache/
-
-# Generated locally with absolute paths
-.mcp.json
-
-# Personal Claude Code settings
-.claude/settings.local.json
-
 # OS files
 .DS_Store
 Thumbs.db
