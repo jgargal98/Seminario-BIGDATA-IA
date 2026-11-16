@@ -63,7 +63,7 @@ Cada vez que preparas un nivel, `demo/session` se borra y se crea de nuevo: lo q
 
 ## Ejercicio
 
-Lee [ejercicio/enunciado.md](ejercicio/enunciado.md).
+El enunciado de la práctica os lo entregará el profesor en PDF.
 
 ## Estructura
 
@@ -74,7 +74,7 @@ Lee [ejercicio/enunciado.md](ejercicio/enunciado.md).
 | `scripts/demo/` | Scripts que usa la demo |
 | `scripts/common.py` | Ajustes compartidos por los scripts |
 | `demo/levels/` | CLAUDE.md del nivel 2 y Skills del nivel 3 |
-| `ejercicio/` | Enunciado y catálogo de datasets |
+| `ejercicio/` | Catálogo de datasets para la práctica |
 
 ## Problemas frecuentes
 
