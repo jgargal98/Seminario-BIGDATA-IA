@@ -58,7 +58,6 @@ tu-repositorio/
 
 ## Entrega
 
-- **Fecha:** [fecha]
 - **Formato:** el enlace a tu repositorio de GitHub. Tiene que ser público o compartido con el profesor.
 
 ## Evaluación
