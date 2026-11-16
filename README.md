@@ -63,7 +63,7 @@ Cada vez que preparas un nivel, `demo/session` se borra y se crea de nuevo: lo q
 
 ## Ejercicio
 
-El enunciado de la práctica os lo entregará el profesor en PDF.
+El enunciado de la práctica os lo entregará el profesor en PDF. Los datasets entre los que elegir están en [catalogo_datasets.md](catalogo_datasets.md).
 
 ## Estructura
 
@@ -74,7 +74,7 @@ El enunciado de la práctica os lo entregará el profesor en PDF.
 | `scripts/demo/` | Scripts que usa la demo |
 | `scripts/common.py` | Ajustes compartidos por los scripts |
 | `demo/levels/` | CLAUDE.md del nivel 2 y Skills del nivel 3 |
-| `ejercicio/` | Catálogo de datasets para la práctica |
+| `catalogo_datasets.md` | Datasets entre los que elegir para la práctica |
 
 ## Problemas frecuentes
 
