@@ -66,8 +66,9 @@ def failure(text, fix=None):
 def check_tools():
     section("1. Programas instalados")
     tools = {
-        "git": ("Git", "Sigue el paso 1 del README."),
-        "uvx": ("uv / uvx", "Sigue el paso 3 del README y abre una terminal nueva."),
+        "git": ("Git", "Instálalo con el comando de la tabla del README y abre una terminal nueva."),
+        "claude": ("Claude Code", "Instálalo con el comando de la tabla del README y abre una terminal nueva."),
+        "uvx": ("uv / uvx", "Instálalo con el comando de la tabla del README y abre una terminal nueva."),
     }
     for command, (name, fix) in tools.items():
         if shutil.which(command):
@@ -75,16 +76,6 @@ def check_tools():
         else:
             failure(f"No se encuentra {name}.", fix)
 
-    # The desktop app's Code tab runs Claude Code without the `claude` command,
-    # so a missing command is only a problem for terminal users.
-    if shutil.which("claude"):
-        ok("Claude Code en la terminal (comando claude)")
-    else:
-        warning(
-            "No se encuentra el comando claude.",
-            "Si usas la app de escritorio (pestaña Code), ignora este aviso. "
-            "Si quieres usar la terminal, sigue el paso 2 del README.",
-        )
     ok(f"Python {sys.version.split()[0]} (gestionado por uv)")
 
     free_gb = shutil.disk_usage(ROOT).free / 1e9
@@ -187,7 +178,7 @@ def prepare_mcp():
     if get_token():
         ok("Sesión de Hugging Face iniciada")
     else:
-        warning("Sin sesión de Hugging Face (opcional, pero recomendable).", "Sigue el paso 6 del README.")
+        warning("Sin sesión de Hugging Face (opcional, pero recomendable).", "Ejecuta: uv run hf auth login")
 
 
 def main():

@@ -13,7 +13,7 @@ uv run scripts/install/check_setup.py
 Este comando instala Python y las librerías del proyecto, descarga los datos de la demo y el modelo de IA (alrededor de 1,5 GB la primera vez), prepara el servidor MCP y comprueba que todo funciona. Puede tardar varios minutos. Al final tiene que decir **«Todo listo para el seminario»**.
 
 - Si se interrumpe, vuelve a ejecutarlo: sigue por donde lo dejó.
-- Los avisos no impiden seguir. «No se encuentra el comando claude» es normal si usas la app de escritorio.
+- Los avisos no impiden seguir; los fallos sí, y cada uno dice cómo arreglarlo.
 
 **Opcional:** inicia sesión en Hugging Face para tener límites de descarga más altos. Ejecuta este comando y sigue los pasos en el navegador:
 
@@ -31,7 +31,7 @@ Necesitas un portátil con Windows, Mac o Linux, 8 GB de RAM y 5 GB libres; un p
 | Claude Code | `irm https://claude.ai/install.ps1 \| iex` | `curl -fsSL https://claude.ai/install.sh \| bash` |
 | uv | `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 \| iex"` | `curl -LsSf https://astral.sh/uv/install.sh \| sh` |
 
-En lugar de Claude Code en la terminal puedes usar la **app de escritorio de Claude** (pestaña Code): <https://claude.ai/download>. El chat normal de Claude no sirve, porque no trabaja sobre las carpetas de tu ordenador.
+El chat normal de Claude no sirve: hace falta Claude Code, que trabaja sobre las carpetas de tu ordenador.
 
 Después, cierra la terminal y abre una nueva, clona el repositorio y entra en él:
 
@@ -53,14 +53,13 @@ uv run scripts/demo/prepare_demo.py --level 2
 
 Después abre Claude Code en la carpeta `demo/session`:
 
-- **Terminal:**
-  ```bash
-  cd demo/session
-  ```
-  ```bash
-  claude
-  ```
-- **App de escritorio:** pestaña **Code**, eligiendo la carpeta `demo/session`.
+```bash
+cd demo/session
+```
+
+```bash
+claude
+```
 
 Cada vez que preparas un nivel, `demo/session` se borra y se crea de nuevo: lo que hayas hecho en el nivel anterior se pierde.
 
