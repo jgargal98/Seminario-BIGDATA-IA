@@ -24,11 +24,7 @@ Un repositorio de GitHub, partiendo de la carpeta [plantilla/](plantilla/), con:
 
 - Un dataset distinto para cada alumno: elige uno del [catálogo](catalogo_datasets.md) y resérvalo con el profesor. Mínimo 100.000 filas. El dataset de la demo no vale.
 - No subas los datos (se descargan con tu script), ni claves, ni rutas de tu ordenador.
-- Antes de entregar, `uv run scripts/validate_submission.py TU_REPO` tiene que terminar sin errores.
-
-## Revisión cruzada
-
-Antes de la entrega intercambiaréis repositorios con la pareja asignada. Cada uno reproduce el trabajo del otro en su propio ordenador, siguiendo solo el README, y rellena la [checklist de revisión](revision_cruzada.md). Los hallazgos se corrigen antes de entregar.
+- Antes de entregar, `uv run scripts/validate_submission.py .` (desde tu repositorio) tiene que terminar sin errores.
 
 ## Consejos
 
@@ -37,4 +33,4 @@ Antes de la entrega intercambiaréis repositorios con la pareja asignada. Cada u
 
 ## Evaluación
 
-Ver la [rúbrica](rubrica.md).
+Se valora sobre todo que el sistema funcione y se pueda comprobar: reglas y Skills basadas en errores reales de la IA, cifras acompañadas de su n, errores del modelo medidos y un análisis que otra persona pueda repetir.

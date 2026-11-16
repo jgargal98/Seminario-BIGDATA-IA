@@ -34,6 +34,3 @@ Si un cálculo tuyo contradice esta tabla, revisa el cálculo antes de seguir.
 5. Las ofertas con salario no son una muestra aleatoria (sesgo hacia ciertos países y portales).
    Debe aparecer como limitación en cualquier conclusión sobre salarios.
 6. Correlación no es causalidad: «las ofertas con X pagan más» no significa «aprender X sube el sueldo».
-
-## Consultas de referencia
-`../../demo/queries/01_top_skills.sql` y `../../demo/queries/02_salary_by_skill.sql`.

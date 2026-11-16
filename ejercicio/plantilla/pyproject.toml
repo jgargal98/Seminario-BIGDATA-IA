@@ -16,7 +16,7 @@ dependencies = [
     "transformers>=4.46",
     "torch>=2.5",
     "matplotlib>=3.9",
-    "mcp>=1.2",               # only used by scripts/test_mcp.py
+    "mcp>=1.2",               # used by scripts/test_mcp.py
 ]
 
 [tool.uv]

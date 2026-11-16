@@ -9,7 +9,6 @@ Examples:
     uv run scripts/download_data.py                                  # demo dataset
     uv run scripts/download_data.py --dataset Yelp/yelp_review_full  # another HF dataset
     uv run scripts/download_data.py --csv my_file.csv                # local file
-    uv run scripts/make_synthetic.py && uv run scripts/download_data.py --synthetic
 """
 
 import argparse

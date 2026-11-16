@@ -4,8 +4,6 @@ Cómo guiar a un asistente de IA (Claude Code) para analizar grandes volúmenes 
 
 Haz la instalación **antes del día del seminario**: la primera vez descarga alrededor de 1,5 GB.
 
-Resumen de requisitos: [docs/requisitos_alumnos.md](docs/requisitos_alumnos.md).
-
 ## Qué necesitas
 
 Portátil con Windows, Mac o Linux, 8 GB de RAM y al menos 5 GB libres en disco. No hace falta instalar Python, Docker ni ninguna base de datos.
@@ -83,10 +81,9 @@ La primera vez te pedirá iniciar sesión con tu cuenta de Claude. En la demo, l
 
 | Carpeta | Contenido |
 |---|---|
-| `scripts/` | Instalación, descarga de datos, perfilado, medición de memoria, clasificación de texto, reproducibilidad y MCP |
-| `demo/` | Demo en 4 niveles: `levels/` (CLAUDE.md y Skills) y `queries/` (consultas de referencia y trampas) |
-| `ejercicio/` | Enunciado, rúbrica, revisión cruzada, catálogo de datasets y plantilla para empezar |
-| `docs/` | Requisitos, apuntes de teoría y referencias |
+| `scripts/` | Instalación y scripts que usa la demo |
+| `demo/` | CLAUDE.md del nivel 2 y Skills del nivel 3 |
+| `ejercicio/` | Enunciado, catálogo de datasets y plantilla para empezar |
 
 ## Demo
 
@@ -108,11 +105,7 @@ Los niveles van del 1 al 4 y son acumulativos: 1 solo prompt, 2 CLAUDE.md, 3 Ski
 
 ## Ejercicio
 
-Lee [ejercicio/enunciado.md](ejercicio/enunciado.md). Antes de entregar:
-
-```bash
-uv run scripts/validate_submission.py ruta/a/tu/repositorio
-```
+Lee [ejercicio/enunciado.md](ejercicio/enunciado.md). Tu repositorio parte de la carpeta [ejercicio/plantilla](ejercicio/plantilla/), que ya incluye sus propios scripts.
 
 ## Problemas frecuentes
 
@@ -123,8 +116,6 @@ uv run scripts/validate_submission.py ruta/a/tu/repositorio
 | PowerShell no permite ejecutar scripts | Usa exactamente el comando del paso 3, que ya incluye el permiso necesario. |
 | La descarga se corta (`Connection reset`, `timeout`) | Vuelve a ejecutar `uv run scripts/check_setup.py`. Lo ya descargado no se repite. Si sigue fallando, prueba otra red. |
 | No hay espacio en disco | Libera al menos 5 GB y vuelve a ejecutar. |
-| Sin conexión el día del seminario | Usa datos inventados con el mismo formato: `uv run scripts/make_synthetic.py` y después `uv run scripts/download_data.py --synthetic`. |
-| El servidor MCP de DuckDB no conecta | `uv run scripts/test_mcp.py --config demo/session/.mcp.json` dice qué falla. |
 | El servidor `huggingface` pide autenticación en `/mcp` | Selecciónalo en `/mcp` y sigue los pasos en el navegador. |
 
 ## Notas
