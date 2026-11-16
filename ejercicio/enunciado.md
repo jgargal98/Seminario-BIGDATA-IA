@@ -20,6 +20,30 @@ Un repositorio de GitHub con:
 6. **`queries/` y `scripts/`:** el análisis completo, repetible siguiendo los comandos de tu README.
 7. **`report.md`:** resultados con n en cada cifra, limitaciones honestas y un **registro de errores de la IA**: al menos 3, cada uno con qué hizo mal, cómo lo detectaste y qué cambiaste en CLAUDE.md, en una Skill o en una consulta para que no vuelva a pasar.
 
+### Estructura obligatoria del repositorio
+
+Todas las entregas tienen que seguir esta estructura y estos nombres:
+
+```text
+tu-repositorio/
+├── README.md               cómo instalar y repetir el análisis, paso a paso
+├── pyproject.toml          dependencias del proyecto
+├── uv.lock
+├── question.md             pregunta y subpreguntas
+├── CLAUDE.md               reglas de trabajo para Claude
+├── .claude/
+│   └── skills/
+│       ├── <skill-del-dataset>/
+│       │   └── SKILL.md
+│       └── <skill-de-metodo>/
+│           └── SKILL.md
+├── .mcp.json.example       configuración MCP sin rutas de tu ordenador
+├── queries/                consultas SQL del análisis
+├── scripts/                scripts de descarga, preparación y análisis
+├── results/                resultados que respaldan cada cifra del informe
+└── report.md               informe final
+```
+
 ## Reglas
 
 - Elige el dataset que quieras del [catálogo](catalogo_datasets.md). El dataset de la demo no vale.
