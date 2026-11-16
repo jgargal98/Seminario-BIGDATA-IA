@@ -48,11 +48,18 @@ tu-repositorio/
 
 - Elige el dataset que quieras del [catálogo](catalogo_datasets.md). El dataset de la demo no vale.
 - No subas los datos (se descargan con tu script), ni claves, ni rutas de tu ordenador.
+- Cada cifra del informe tiene que salir de los resultados guardados en `results/`.
 
 ## Consejos
 
 - Trabaja con **muestras pequeñas** mientras construyes el sistema, para no agotar la cuota de tu plan Pro.
 - Un error de la IA que no aparece en tu informe no cuenta a tu favor. Si la IA nunca se equivocó, no la has puesto a prueba lo suficiente: busca trampas (nulos, duplicados, tipos, tamaño, sesgos).
+- Abre Claude Code siempre en la raíz de tu repositorio, para que lea tu CLAUDE.md y tus Skills.
+
+## Entrega
+
+- **Fecha:** [fecha]
+- **Formato:** el enlace a tu repositorio de GitHub. Tiene que ser público o compartido con el profesor.
 
 ## Evaluación
 
