@@ -22,7 +22,7 @@ Un repositorio de GitHub, partiendo de la carpeta [plantilla/](plantilla/), con:
 
 ## Reglas
 
-- Un dataset distinto para cada alumno: elige uno del [catálogo](catalogo_datasets.md) y resérvalo con el profesor. Mínimo 100.000 filas. El dataset de la demo no vale.
+- Elige el dataset que quieras del [catálogo](catalogo_datasets.md). El dataset de la demo no vale.
 - No subas los datos (se descargan con tu script), ni claves, ni rutas de tu ordenador.
 - Antes de entregar, `uv run scripts/validate_submission.py .` (desde tu repositorio) tiene que terminar sin errores.
 
