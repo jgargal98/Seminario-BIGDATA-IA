@@ -1,6 +1,6 @@
 # Fundamentos de Big Data (apuntes para la clase)
 
-Cada apartado indica en qué bloque del [guion](guion_presentadores.md) aparece. Las cifras están medidas sobre los datos reales de la demo.
+Las cifras están medidas sobre los datos reales de la demo.
 
 ## 1. Qué es Big Data y las 5 V (bloque Big Data)
 

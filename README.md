@@ -86,7 +86,7 @@ La primera vez te pedirá iniciar sesión con tu cuenta de Claude. En la demo, l
 | `scripts/` | Instalación, descarga de datos, perfilado, medición de memoria, clasificación de texto, reproducibilidad y MCP |
 | `demo/` | Demo en 4 niveles: `prompts/`, `levels/` (CLAUDE.md y Skills) y `queries/` (consultas de referencia y trampas) |
 | `ejercicio/` | Enunciado, rúbrica, revisión cruzada, catálogo de datasets y plantilla para empezar |
-| `docs/` | Guion de presentadores, apuntes de teoría, errores típicos de la IA, demo de escalado y referencias |
+| `docs/` | Requisitos, apuntes de teoría y referencias |
 
 ## Demo
 
