@@ -2,7 +2,7 @@
 Prepare the demo working folder (demo/session/) for a given level.
 
 Levels are CUMULATIVE:
-    1  empty folder: only the prompt changes (see demo/prompts/)
+    1  empty folder: only the prompt changes
     2  + CLAUDE.md
     3  + Skills (.claude/skills/)
     4  + MCP servers (.mcp.json: DuckDB read-only and Hugging Face)

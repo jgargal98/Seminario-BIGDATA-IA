@@ -1,7 +1,5 @@
 # Referencias
 
-Comprobad que los enlaces siguen vigentes antes de citarlos en las diapositivas.
-
 ## Herramientas
 
 - Anthropic. Claude Code: memoria y CLAUDE.md. <https://docs.claude.com/en/docs/claude-code/memory>
@@ -22,14 +20,13 @@ Comprobad que los enlaces siguen vigentes antes de citarlos en las diapositivas.
 ## Artículos
 
 - Dean, J. y Ghemawat, S. (2004). MapReduce: Simplified data processing on large clusters. OSDI '04.
+- Gartner. (s.f.). Big Data. *Gartner Information Technology Glossary*. https://www.gartner.com/en/information-technology/glossary/big-data
 - Laney, D. (2001). 3D data management: Controlling data volume, velocity and variety. META Group.
 - Raasveldt, M. y Mühleisen, H. (2019). DuckDB: an embeddable analytical database. SIGMOD '19.
 - Hou, Y. et al. (2024). Bridging Language and Items for Retrieval and Recommendation. arXiv:2403.03952 (Amazon Reviews 2023).
 
-Comprobad autores, año y medio de los artículos antes de citarlos formalmente.
-
 ## Datos
 
 - Barousse, L. data_jobs. Hugging Face `lukebarousse/data_jobs`. Licencia Apache 2.0. Demo principal.
-- `srvmishra832/multilingual-amazon-reviews-6-languages`. Copia del antiguo Amazon Reviews Multi, retirado de Hugging Face. Sin licencia declarada. Solo para la demo de texto.
-- `bagadbilla/amazon-reviews-2023-trimmed`. Recorte de Amazon Reviews 2023 (McAuley Lab). Licencia `other`. Solo para la demo de escalado.
+- `srvmishra832/multilingual-amazon-reviews-6-languages`. Copia del antiguo Amazon Reviews Multi, retirado de Hugging Face. Sin licencia declarada. Usado en la parte de texto no estructurado.
+- `bagadbilla/amazon-reviews-2023-trimmed`. Recorte de Amazon Reviews 2023 (McAuley Lab). Licencia `other`. Usado para mostrar los límites del escalado.

@@ -4,7 +4,7 @@ Cómo guiar a un asistente de IA (Claude Code) para analizar grandes volúmenes 
 
 Haz la instalación **antes del día del seminario**: la primera vez descarga alrededor de 1,5 GB.
 
-Hay una versión paso a paso para los alumnos en [docs/requisitos_alumnos.md](docs/requisitos_alumnos.md).
+Resumen de requisitos: [docs/requisitos_alumnos.md](docs/requisitos_alumnos.md).
 
 ## Qué necesitas
 
@@ -33,7 +33,7 @@ Comprueba si ya lo tienes con `git --version`. Si no:
 Claude Code se puede usar de dos formas. Las dos leen el CLAUDE.md, las Skills y el MCP del proyecto. El chat normal de Claude **no** sirve, porque no trabaja sobre las carpetas de tu ordenador.
 
 - **App de escritorio de Claude, pestaña Code:** si ya la tienes, no instales nada más. Descárgala de <https://claude.ai/download> si no la tienes.
-- **Terminal (comando `claude`):** es lo que usan los presentadores, porque algunos comandos de la demo (`/mcp`, `/memory`) funcionan mejor ahí.
+- **Terminal (comando `claude`):** algunos comandos de la demo (`/mcp`, `/memory`) funcionan mejor aquí.
   - **Windows:** `irm https://claude.ai/install.ps1 | iex`
   - **Mac y Linux:** `curl -fsSL https://claude.ai/install.sh | bash`
 
@@ -84,7 +84,7 @@ La primera vez te pedirá iniciar sesión con tu cuenta de Claude. En la demo, l
 | Carpeta | Contenido |
 |---|---|
 | `scripts/` | Instalación, descarga de datos, perfilado, medición de memoria, clasificación de texto, reproducibilidad y MCP |
-| `demo/` | Demo en 4 niveles: `prompts/`, `levels/` (CLAUDE.md y Skills) y `queries/` (consultas de referencia y trampas) |
+| `demo/` | Demo en 4 niveles: `levels/` (CLAUDE.md y Skills) y `queries/` (consultas de referencia y trampas) |
 | `ejercicio/` | Enunciado, rúbrica, revisión cruzada, catálogo de datasets y plantilla para empezar |
 | `docs/` | Requisitos, apuntes de teoría y referencias |
 
@@ -123,11 +123,10 @@ uv run scripts/validate_submission.py ruta/a/tu/repositorio
 | PowerShell no permite ejecutar scripts | Usa exactamente el comando del paso 3, que ya incluye el permiso necesario. |
 | La descarga se corta (`Connection reset`, `timeout`) | Vuelve a ejecutar `uv run scripts/check_setup.py`. Lo ya descargado no se repite. Si sigue fallando, prueba otra red. |
 | No hay espacio en disco | Libera al menos 5 GB y vuelve a ejecutar. |
-| Sin conexión el día del seminario | Plan B con datos inventados: `uv run scripts/make_synthetic.py` y después `uv run scripts/download_data.py --synthetic`. |
+| Sin conexión el día del seminario | Usa datos inventados con el mismo formato: `uv run scripts/make_synthetic.py` y después `uv run scripts/download_data.py --synthetic`. |
 | El servidor MCP de DuckDB no conecta | `uv run scripts/test_mcp.py --config demo/session/.mcp.json` dice qué falla. |
 | El servidor `huggingface` pide autenticación en `/mcp` | Selecciónalo en `/mcp` y sigue los pasos en el navegador. |
 
 ## Notas
 
 - Claude no es determinista: lo que haga en cada nivel puede variar entre sesiones.
-- Las cifras de las Skills y de los apuntes se han comprobado sobre los datos reales. Si algo no te cuadra, compruébalo: es parte del ejercicio.

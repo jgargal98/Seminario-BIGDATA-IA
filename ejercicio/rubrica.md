@@ -17,6 +17,6 @@
 - Cifras del informe que no salen de `results/`: -1 por cada cifra inventada o no verificable.
 - `validate_submission.py` con errores: la entrega no se considera completa.
 
-## Nota para el profesorado
+## Sobre el validador
 
-El validador comprueba la estructura, no la calidad. La calidad se evalúa con esta rúbrica y con la reproducción por un compañero.
+`validate_submission.py` comprueba la estructura, no la calidad. La calidad se evalúa con esta rúbrica y con la reproducción por un compañero.
