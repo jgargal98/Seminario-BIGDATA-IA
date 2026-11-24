@@ -16,7 +16,7 @@ Crea `report.md` con estas secciones y en este orden:
 7. **Cómo reproducirlo:** los comandos exactos.
 
 ## Antes de terminar
-- Ejecuta `uv run ../../scripts/demo/reproduce.py` (genera `results/*.csv` y `results/fingerprints.json`).
+- Ejecuta `uv run --project "<repositorio>" "<repositorio>/scripts/demo/reproduce.py"` (genera `results/*.csv` y `results/fingerprints.json`).
 - Ejecútalo otra vez con `--check`: tiene que terminar en REPRODUCIBLE.
 - No pongas en el informe ninguna cifra que no salga de `results/`.
 - Si algo no se pudo verificar, escríbelo en Limitaciones en vez de omitirlo.

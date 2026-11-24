@@ -9,7 +9,6 @@ data/
 
 # Generated per machine (absolute paths) or per run
 .mcp.json
-demo/session/
 results/
 
 # Personal Claude Code settings

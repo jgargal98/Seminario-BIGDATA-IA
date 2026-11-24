@@ -15,6 +15,6 @@ Haz esto ANTES de cualquier cálculo y responde con una ficha corta.
 6. **Rangos:** mínimo, máximo y mediana de las columnas numéricas. Señala valores imposibles (negativos, ceros, extremos).
 
 Salida: una tabla `columna | tipo | % nulos | observación` y una lista de «riesgos para el análisis».
-Atajo para los puntos 1 y 2: `uv run ../../scripts/demo/profile_dataset.py`.
+Atajo para los puntos 1 y 2: `uv run --project "<repositorio>" "<repositorio>/scripts/demo/profile_dataset.py"`.
 
 En esta fase no saques conclusiones sobre el tema: solo describe los datos.

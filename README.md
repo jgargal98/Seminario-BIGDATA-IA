@@ -43,23 +43,25 @@ cd Seminario-BIGDATA-IA
 
 ## Demo
 
-La demo tiene 4 niveles acumulativos: 1 solo prompt, 2 CLAUDE.md, 3 Skills, 4 MCP. Para preparar un nivel:
+La demo tiene 4 niveles acumulativos: 1 solo prompt, 2 CLAUDE.md, 3 Skills, 4 MCP. Se hace en una carpeta aparte, `seminario-demo`, que se crea al lado del repositorio: así, en cada nivel Claude solo tiene lo que ese nivel le da.
+
+Hacen falta dos terminales. En la primera, desde la raíz del repositorio, prepara un nivel:
 
 ```bash
 uv run scripts/demo/prepare_demo.py --level 2
 ```
 
-Después abre Claude Code en la carpeta `demo/session`:
+En la segunda, abre Claude Code en la carpeta de la demo:
 
 ```bash
-cd demo/session
+cd ../seminario-demo
 ```
 
 ```bash
 claude
 ```
 
-Cada vez que preparas un nivel, `demo/session` se vacía: lo que hayas hecho en el nivel anterior se pierde. Sal de Claude (`/exit`) antes de preparar otro nivel y vuelve a abrirlo después: Claude solo lee el CLAUDE.md, las Skills y el MCP al arrancar.
+Cada vez que preparas un nivel, `seminario-demo` se vacía: lo que hayas hecho en el nivel anterior se pierde. Sal de Claude (`/exit`) antes de preparar otro nivel y vuelve a abrirlo después: Claude solo lee el CLAUDE.md, las Skills y el MCP al arrancar.
 
 ## Ejercicio
 

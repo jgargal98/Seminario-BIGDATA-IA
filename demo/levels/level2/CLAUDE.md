@@ -1,12 +1,12 @@
 # Proyecto: análisis de ofertas de empleo del sector datos
 
 ## Contexto
-- Datos: `../../data/analysis.duckdb`, tabla `jobs` (785.741 filas, una por oferta).
-  Los mismos datos están en `../../data/jobs.parquet`.
+- Datos: `data/analysis.duckdb`, tabla `jobs` (785.741 filas, una por oferta).
+  Los mismos datos están en `data/jobs.parquet`.
 - Columnas clave: `row_id` (identificador único), `job_title_short`, `job_country`,
   `salary_year_avg` (solo el 2,8 % tiene valor), `job_skills` (TEXTO con forma de lista, no una lista real).
-- El entorno de Python es el del proyecto: ejecuta siempre con `uv run python ...` o `uv run ../../scripts/<script>.py`.
-  No instales paquetes.
+- El entorno de Python es el del repositorio del seminario, que tiene DuckDB: ejecuta siempre con
+  `uv run --project "<repositorio>" python ...`. No instales paquetes.
 
 ## Reglas de trabajo (síguelas siempre)
 1. Usa DuckDB (SQL). No cargues el dataset completo en pandas: trae a Python solo resultados.
@@ -24,5 +24,5 @@
 - Termina siempre con «Qué no sé / qué conviene verificar».
 
 ## Herramientas del proyecto
-- `uv run ../../scripts/demo/profile_dataset.py` perfila la tabla.
-- `uv run ../../scripts/demo/reproduce.py` repite todas las consultas de `queries/` y guarda sus huellas.
+- `uv run --project "<repositorio>" "<repositorio>/scripts/demo/profile_dataset.py"` perfila la tabla.
+- `uv run --project "<repositorio>" "<repositorio>/scripts/demo/reproduce.py"` repite todas las consultas de `queries/` y guarda sus huellas.
