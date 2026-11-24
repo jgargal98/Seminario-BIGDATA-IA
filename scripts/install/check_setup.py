@@ -26,6 +26,7 @@ from common import (
     DATA_DIR,
     DEMO_DATASET,
     DUCKDB_MCP_UVX_ARGS,
+    REVIEWS_SAMPLE_PATH,
     ROOT,
     SENTIMENT_MODEL,
     TABLE,
@@ -124,20 +125,30 @@ def check_remote_read():
 def prepare_demo_data():
     section("4. Datos de la demo (carpeta data/)")
     import duckdb
-    from download_data import build, download_from_hub
+    from download_data import build, download_from_hub, download_reviews_sample
 
     try:
         if DATABASE_PATH.exists():
             with duckdb.connect(str(DATABASE_PATH), read_only=True) as connection:
                 rows = connection.sql(f"SELECT count(*) FROM {TABLE}").fetchall()[0][0]
             ok(f"Ya preparados: tabla `{TABLE}` con {format_int(rows)} filas")
-            return
-        print("  Descargando unos 230 MB (solo la primera vez)...")
-        sources = download_from_hub(DEMO_DATASET, DATA_DIR / "download", max_files=1)
-        rows, columns = build(sources)
-        ok(f"Tabla `{TABLE}` creada: {format_int(rows)} filas, {columns} columnas")
+        else:
+            print("  Descargando unos 230 MB (solo la primera vez)...")
+            sources = download_from_hub(DEMO_DATASET, DATA_DIR / "download", max_files=1)
+            rows, columns = build(sources)
+            ok(f"Tabla `{TABLE}` creada: {format_int(rows)} filas, {columns} columnas")
     except Exception as error:
         failure(f"No se han podido preparar los datos: {error}", "Revisa tu conexión y vuelve a ejecutar.")
+
+    try:
+        if REVIEWS_SAMPLE_PATH.exists():
+            ok(f"Muestra de reseñas ya preparada: {REVIEWS_SAMPLE_PATH.relative_to(ROOT).as_posix()}")
+            return
+        print("  Sacando una muestra de reseñas de Hugging Face (solo la primera vez, puede tardar unos minutos)...")
+        rows = download_reviews_sample()
+        ok(f"Muestra de {rows} reseñas guardada en {REVIEWS_SAMPLE_PATH.relative_to(ROOT).as_posix()}")
+    except Exception as error:
+        failure(f"No se ha podido preparar la muestra de reseñas: {error}", "Revisa tu conexión y vuelve a ejecutar.")
 
 
 def check_model():

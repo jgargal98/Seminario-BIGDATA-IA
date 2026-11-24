@@ -22,7 +22,8 @@ description: Convierte texto libre (reseñas, comentarios, descripciones) en una
 4. Analiza la columna nueva con SQL: DuckDB consulta un DataFrame de pandas por su nombre de variable.
 
 ## Ejemplo funcionando
-`uv run ../../scripts/demo/classify_text.py --sample 200`
+`uv run ../../scripts/demo/classify_text.py` clasifica la muestra de 100 reseñas en español que `check_setup.py` guardó en `data/` (no necesita red).
+Con `--sample N --language xx` saca una muestra nueva directamente de Hugging Face; es más lento porque recorre el fichero remoto.
 
 ## Al informar
 - Di siempre que es una **predicción**, cuántos textos se clasificaron y el error medido.

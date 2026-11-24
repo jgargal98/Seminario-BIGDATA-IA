@@ -20,9 +20,45 @@ import duckdb
 # Shared settings live one folder up, in scripts/common.py.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from common import DATA_DIR, DATABASE_PATH, DEMO_DATASET, PARQUET_PATH, ROOT, TABLE, format_int
+from common import (
+    DATA_DIR,
+    DATABASE_PATH,
+    DEMO_DATASET,
+    PARQUET_PATH,
+    REVIEWS_SAMPLE_LANGUAGE,
+    REVIEWS_SAMPLE_PATH,
+    REVIEWS_SAMPLE_SEED,
+    REVIEWS_SAMPLE_SIZE,
+    ROOT,
+    TABLE,
+    TEXT_DATASET,
+    TEXT_DATASET_FILE,
+    format_int,
+)
 
 SYNTHETIC_CSV = DATA_DIR / "synthetic" / "data_jobs_synthetic.csv"
+
+
+def remote_reviews_query(size, language, seed):
+    """SQL that samples labelled reviews straight from Hugging Face, without downloading the file."""
+    path = f"hf://datasets/{TEXT_DATASET}/{TEXT_DATASET_FILE}"
+    # USING SAMPLE runs before WHERE, so the language filter goes in a subquery.
+    # The seed makes the sample repeatable: same reviews on every run and machine.
+    return f"""
+        SELECT review_body, stars
+        FROM (SELECT review_body, stars FROM '{path}' WHERE language = '{language}')
+        USING SAMPLE reservoir({size} ROWS) REPEATABLE ({seed})
+    """
+
+
+def download_reviews_sample(path=REVIEWS_SAMPLE_PATH, size=REVIEWS_SAMPLE_SIZE,
+                            language=REVIEWS_SAMPLE_LANGUAGE, seed=REVIEWS_SAMPLE_SEED):
+    """Save a small sample of reviews as Parquet so the text demo works offline; return its rows."""
+    connection = duckdb.connect()
+    connection.sql("INSTALL httpfs; LOAD httpfs;")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    connection.sql(f"COPY ({remote_reviews_query(size, language, seed)}) TO '{path.as_posix()}' (FORMAT parquet)")
+    return connection.sql(f"SELECT count(*) FROM '{path.as_posix()}'").fetchall()[0][0]
 
 
 def download_from_hub(repo, destination, max_files):

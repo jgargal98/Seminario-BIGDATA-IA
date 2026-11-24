@@ -1,9 +1,13 @@
 """
 Turn unstructured text into a column with a Hugging Face model, and measure its error.
 
-Takes a random sample of Spanish product reviews straight from Hugging Face,
-predicts the stars from the text alone and compares them with the real stars.
-The point: an AI-made column is a prediction, so it must be checked on labelled data.
+Predicts the stars of Spanish product reviews from the text alone and compares them
+with the real stars. The point: an AI-made column is a prediction, so it must be
+checked on labelled data.
+
+By default it uses the sample of reviews that check_setup.py saved in data/, so the
+demo does not depend on the network. With --sample or --language it reads a new
+sample straight from Hugging Face instead (slower: it goes through the remote file).
 
 Usage:
     uv run scripts/demo/classify_text.py
@@ -18,32 +22,47 @@ from pathlib import Path
 import duckdb
 import pandas as pd
 
-# Shared settings live one folder up, in scripts/common.py.
+# Shared settings live one folder up, in scripts/common.py and scripts/install/.
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "install"))
 
-from common import SENTIMENT_MODEL, TEXT_DATASET, TEXT_DATASET_FILE
+from common import (
+    REVIEWS_SAMPLE_LANGUAGE,
+    REVIEWS_SAMPLE_PATH,
+    REVIEWS_SAMPLE_SEED,
+    REVIEWS_SAMPLE_SIZE,
+    ROOT,
+    SENTIMENT_MODEL,
+)
+from download_data import remote_reviews_query
+
+
+def load_sample(connection, args):
+    """Return (DataFrame, where it came from): the saved sample, or a fresh remote one."""
+    remote = args.sample is not None or args.language != REVIEWS_SAMPLE_LANGUAGE
+    if not remote and REVIEWS_SAMPLE_PATH.exists():
+        rows = connection.sql(f"SELECT review_body, stars FROM '{REVIEWS_SAMPLE_PATH.as_posix()}'").fetchall()
+        return pd.DataFrame(rows, columns=["review_body", "stars"]), REVIEWS_SAMPLE_PATH.relative_to(ROOT).as_posix()
+
+    size = args.sample or REVIEWS_SAMPLE_SIZE
+    print(f"Leyendo {size} reseñas de Hugging Face (puede tardar unos minutos)...", flush=True)
+    connection.sql("INSTALL httpfs; LOAD httpfs;")
+    rows = connection.sql(remote_reviews_query(size, args.language, args.seed)).fetchall()
+    return pd.DataFrame(rows, columns=["review_body", "stars"]), "Hugging Face"
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--sample", type=int, default=200, help="reviews to classify (CPU: about 10-20 per second)")
-    parser.add_argument("--language", default="es", help="de, en, es, fr, ja or zh")
-    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--sample", type=int, help="read a new sample of this size from Hugging Face")
+    parser.add_argument("--language", default=REVIEWS_SAMPLE_LANGUAGE, help="de, en, es, fr, ja or zh")
+    parser.add_argument("--seed", type=int, default=REVIEWS_SAMPLE_SEED)
     args = parser.parse_args()
 
     connection = duckdb.connect()
-    connection.sql("INSTALL httpfs; LOAD httpfs;")
-    path = f"hf://datasets/{TEXT_DATASET}/{TEXT_DATASET_FILE}"
-    # USING SAMPLE runs before WHERE, so the language filter goes in a subquery.
-    # The seed makes the demo repeatable: same reviews on every run.
-    rows = connection.sql(f"""
-        SELECT review_body, stars
-        FROM (SELECT review_body, stars FROM '{path}' WHERE language = '{args.language}')
-        USING SAMPLE reservoir({args.sample} ROWS) REPEATABLE ({args.seed})
-    """).fetchall()
-    sample = pd.DataFrame(rows, columns=["review_body", "stars"])
-    print(f"Muestra: {len(sample)} reseñas en '{args.language}'")
+    sample, source = load_sample(connection, args)
+    print(f"Muestra: {len(sample)} reseñas en '{args.language}' ({source})")
 
+    print("Cargando el modelo...", flush=True)
     from transformers import pipeline
 
     classifier = pipeline("sentiment-analysis", model=SENTIMENT_MODEL)

@@ -15,6 +15,13 @@ TEXT_DATASET = "srvmishra832/multilingual-amazon-reviews-6-languages"
 TEXT_DATASET_FILE = "data/train-00000-of-00001.parquet"
 SENTIMENT_MODEL = "nlptown/bert-base-multilingual-uncased-sentiment"
 
+# A small labelled sample of reviews, saved once by check_setup.py so the text demo
+# does not depend on the classroom network. The seed keeps it identical on every machine.
+REVIEWS_SAMPLE_PATH = DATA_DIR / "reviews_es.parquet"
+REVIEWS_SAMPLE_SIZE = 100
+REVIEWS_SAMPLE_LANGUAGE = "es"
+REVIEWS_SAMPLE_SEED = 42
+
 # Pinned so every student runs the same server, which in turn pins duckdb==1.5.6.
 DUCKDB_MCP_SERVER = "mcp-server-motherduck@1.1.0"
 # Without it uvx picks the newest Python, which may have no duckdb 1.5.6 wheels yet.
