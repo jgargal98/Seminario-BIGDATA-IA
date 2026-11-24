@@ -70,7 +70,9 @@ def copy_level_file(source, destination):
     """Copy a CLAUDE.md or SKILL.md, pointing its commands at this repository."""
     text = source.read_text(encoding="utf-8").replace(REPO_PLACEHOLDER, ROOT.as_posix())
     destination.parent.mkdir(parents=True, exist_ok=True)
-    destination.write_text(text, encoding="utf-8")
+    # Keep Unix line endings: on Windows, write_text would turn them into CRLF and
+    # Claude Code would not recognise the Skill's front matter.
+    destination.write_text(text, encoding="utf-8", newline="\n")
 
 
 def create_plain_python():
